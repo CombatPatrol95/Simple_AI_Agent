@@ -4,7 +4,7 @@ Dispatch Agent — decomposes complex user requests into ordered subtasks.
 
 from google.adk.agents import Agent
 
-from agents.prompts import DISPATCH_INSTRUCTION
+from ..prompts import DISPATCH_INSTRUCTION
 
 
 dispatch_agent = Agent(

@@ -4,8 +4,8 @@ CI/CD Agent — generates and manages CI/CD pipeline configurations.
 
 from google.adk.agents import Agent
 
-from agents.prompts import CICD_INSTRUCTION
-from agents.tools.cicd_tools import (
+from ..prompts import CICD_INSTRUCTION
+from ..tools.cicd_tools import (
     generate_github_actions,
     generate_gitlab_ci,
     list_workflows,

@@ -4,8 +4,8 @@ Monitoring Agent — observability, metrics, alerts, and log analysis.
 
 from google.adk.agents import Agent
 
-from agents.prompts import MONITORING_INSTRUCTION
-from agents.tools.monitoring_tools import (
+from ..prompts import MONITORING_INSTRUCTION
+from ..tools.monitoring_tools import (
     query_metrics,
     check_alerts,
     get_service_logs,

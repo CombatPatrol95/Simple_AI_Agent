@@ -4,8 +4,8 @@ Cloud Infrastructure Agent — manages AWS, GCP, and Azure resources via CLI.
 
 from google.adk.agents import Agent
 
-from agents.prompts import CLOUD_INFRA_INSTRUCTION
-from agents.tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
+from ..prompts import CLOUD_INFRA_INSTRUCTION
+from ..tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
 
 
 cloud_infra_agent = Agent(

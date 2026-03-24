@@ -4,8 +4,8 @@ Scripting Agent — automation script generation and shell execution.
 
 from google.adk.agents import Agent
 
-from agents.prompts import SCRIPTING_INSTRUCTION
-from agents.tools.scripting_tools import generate_script, run_shell_command
+from ..prompts import SCRIPTING_INSTRUCTION
+from ..tools.scripting_tools import generate_script, run_shell_command
 
 
 scripting_agent = Agent(
