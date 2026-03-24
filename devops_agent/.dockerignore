@@ -1,0 +1,33 @@
+# Environment variables — injected at deployment, not baked into image
+.env
+
+# Virtual environment (rebuilt inside container)
+.venv/
+venv/
+
+# Git
+.git/
+.gitignore
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose.yml
+*.log
+
+# Docs / artifacts
+README.md
