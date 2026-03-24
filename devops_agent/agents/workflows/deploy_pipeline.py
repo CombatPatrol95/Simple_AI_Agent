@@ -12,9 +12,9 @@ ADK enforces that each agent can only have one parent.
 
 from google.adk.agents import Agent, ParallelAgent, SequentialAgent
 
-from ..prompts import CICD_INSTRUCTION, KUBERNETES_INSTRUCTION
-from ..tools.cicd_tools import generate_github_actions, generate_gitlab_ci, list_workflows
-from ..tools.kubernetes_tools import list_pods, scale_deployment, get_pod_logs, apply_manifest
+from agents.prompts import CICD_INSTRUCTION, KUBERNETES_INSTRUCTION
+from agents.tools.cicd_tools import generate_github_actions, generate_gitlab_ci, list_workflows
+from agents.tools.kubernetes_tools import list_pods, scale_deployment, get_pod_logs, apply_manifest
 
 
 # Workflow-specific agent instances

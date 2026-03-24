@@ -45,7 +45,7 @@ GOOGLE_API_KEY=your-actual-api-key-here
 ### 3. Run with ADK Developer UI
 
 ```bash
-adk web devops_agent
+adk web agents
 ```
 
 Open `http://localhost:8000` in your browser to interact with the agent.

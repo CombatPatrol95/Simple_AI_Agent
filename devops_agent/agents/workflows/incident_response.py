@@ -13,14 +13,14 @@ ADK enforces that each agent can only have one parent.
 
 from google.adk.agents import Agent, SequentialAgent
 
-from ..prompts import (
+from agents.prompts import (
     MONITORING_INSTRUCTION,
     CLOUD_INFRA_INSTRUCTION,
     SCRIPTING_INSTRUCTION,
 )
-from ..tools.monitoring_tools import query_metrics, check_alerts, get_service_logs
-from ..tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
-from ..tools.scripting_tools import generate_script, run_shell_command
+from agents.tools.monitoring_tools import query_metrics, check_alerts, get_service_logs
+from agents.tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
+from agents.tools.scripting_tools import generate_script, run_shell_command
 
 
 # Workflow-specific agent instances (separate from the ones used by the coordinator)
