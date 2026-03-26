@@ -5,11 +5,11 @@ Unit tests for DevOps agent tools.
 import pytest
 from unittest.mock import patch, MagicMock
 
-from devops_agent.tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
-from devops_agent.tools.kubernetes_tools import list_pods, scale_deployment, get_pod_logs, apply_manifest
-from devops_agent.tools.cicd_tools import generate_github_actions, generate_gitlab_ci, list_workflows
-from devops_agent.tools.monitoring_tools import query_metrics, check_alerts, get_service_logs
-from devops_agent.tools.scripting_tools import generate_script, run_shell_command
+from agents.tools.cloud_tools import run_aws_cli, run_gcp_cli, run_azure_cli
+from agents.tools.kubernetes_tools import list_pods, scale_deployment, get_pod_logs, apply_manifest
+from agents.tools.cicd_tools import generate_github_actions, generate_gitlab_ci, list_workflows
+from agents.tools.monitoring_tools import query_metrics, check_alerts, get_service_logs
+from agents.tools.scripting_tools import generate_script, run_shell_command
 
 
 # ─── Cloud Tools Tests ────────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ from devops_agent.tools.scripting_tools import generate_script, run_shell_comman
 class TestCloudTools:
     """Tests for cloud CLI tool functions."""
 
-    @patch("devops_agent.tools.cloud_tools.subprocess.run")
+    @patch("agents.tools.cloud_tools.subprocess.run")
     def test_run_aws_cli_success(self, mock_run):
         mock_run.return_value = MagicMock(
             returncode=0,
@@ -29,7 +29,7 @@ class TestCloudTools:
         assert result["cli"] == "aws"
         assert "stdout" in result
 
-    @patch("devops_agent.tools.cloud_tools.subprocess.run")
+    @patch("agents.tools.cloud_tools.subprocess.run")
     def test_run_aws_cli_error(self, mock_run):
         mock_run.return_value = MagicMock(
             returncode=1,
@@ -39,21 +39,21 @@ class TestCloudTools:
         result = run_aws_cli("aws s3 ls")
         assert result["status"] == "error"
 
-    @patch("devops_agent.tools.cloud_tools.subprocess.run")
+    @patch("agents.tools.cloud_tools.subprocess.run")
     def test_run_gcp_cli_success(self, mock_run):
         mock_run.return_value = MagicMock(returncode=0, stdout="project-id", stderr="")
         result = run_gcp_cli("gcloud config get-value project")
         assert result["status"] == "success"
         assert result["cli"] == "gcloud"
 
-    @patch("devops_agent.tools.cloud_tools.subprocess.run")
+    @patch("agents.tools.cloud_tools.subprocess.run")
     def test_run_azure_cli_success(self, mock_run):
         mock_run.return_value = MagicMock(returncode=0, stdout="[]", stderr="")
         result = run_azure_cli("az vm list")
         assert result["status"] == "success"
         assert result["cli"] == "az"
 
-    @patch("devops_agent.tools.cloud_tools.subprocess.run")
+    @patch("agents.tools.cloud_tools.subprocess.run")
     def test_cli_not_found(self, mock_run):
         mock_run.side_effect = FileNotFoundError()
         result = run_aws_cli("aws s3 ls")
@@ -66,8 +66,8 @@ class TestCloudTools:
 class TestKubernetesTools:
     """Tests for Kubernetes tool functions."""
 
-    @patch("devops_agent.tools.kubernetes_tools.subprocess.run")
-    @patch("devops_agent.tools.kubernetes_tools._get_k8s_client", return_value=None)
+    @patch("agents.tools.kubernetes_tools.subprocess.run")
+    @patch("agents.tools.kubernetes_tools._get_k8s_client", return_value=None)
     def test_list_pods_kubectl_fallback(self, mock_client, mock_run):
         mock_run.return_value = MagicMock(
             returncode=0,
@@ -77,8 +77,8 @@ class TestKubernetesTools:
         result = list_pods("default")
         assert result["status"] == "success"
 
-    @patch("devops_agent.tools.kubernetes_tools.subprocess.run")
-    @patch("devops_agent.tools.kubernetes_tools._get_k8s_client", return_value=None)
+    @patch("agents.tools.kubernetes_tools.subprocess.run")
+    @patch("agents.tools.kubernetes_tools._get_k8s_client", return_value=None)
     def test_scale_deployment_kubectl(self, mock_client, mock_run):
         mock_run.return_value = MagicMock(
             returncode=0,
@@ -154,7 +154,7 @@ class TestScriptingTools:
         assert result["status"] == "error"
         assert "Unsupported" in result["error"]
 
-    @patch("devops_agent.tools.scripting_tools.subprocess.run")
+    @patch("agents.tools.scripting_tools.subprocess.run")
     def test_run_shell_command_success(self, mock_run):
         mock_run.return_value = MagicMock(
             returncode=0,

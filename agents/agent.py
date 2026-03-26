@@ -8,8 +8,8 @@ for state management, safety checks, and audit logging.
 
 from google.adk.agents import Agent
 
-from .prompts import COORDINATOR_INSTRUCTION
-from .callbacks import (
+from agents.prompts import COORDINATOR_INSTRUCTION
+from agents.callbacks import (
     before_agent_callback,
     after_agent_callback,
     before_tool_callback,
@@ -17,16 +17,16 @@ from .callbacks import (
 )
 
 # Sub-agents
-from .sub_agents.dispatch_agent import dispatch_agent
-from .sub_agents.cloud_infra_agent import cloud_infra_agent
-from .sub_agents.kubernetes_agent import kubernetes_agent
-from .sub_agents.cicd_agent import cicd_agent
-from .sub_agents.monitoring_agent import monitoring_agent
-from .sub_agents.scripting_agent import scripting_agent
+from agents.sub_agents.dispatch_agent import dispatch_agent
+from agents.sub_agents.cloud_infra_agent import cloud_infra_agent
+from agents.sub_agents.kubernetes_agent import kubernetes_agent
+from agents.sub_agents.cicd_agent import cicd_agent
+from agents.sub_agents.monitoring_agent import monitoring_agent
+from agents.sub_agents.scripting_agent import scripting_agent
 
 # Workflow agents
-from .workflows.incident_response import incident_response_workflow
-from .workflows.deploy_pipeline import deploy_pipeline_workflow
+from agents.workflows.incident_response import incident_response_workflow
+from agents.workflows.deploy_pipeline import deploy_pipeline_workflow
 
 
 root_agent = Agent(

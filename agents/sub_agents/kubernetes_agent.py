@@ -4,8 +4,8 @@ Kubernetes Agent — manages Kubernetes clusters and resources.
 
 from google.adk.agents import Agent
 
-from ..prompts import KUBERNETES_INSTRUCTION
-from ..tools.kubernetes_tools import (
+from agents.prompts import KUBERNETES_INSTRUCTION
+from agents.tools.kubernetes_tools import (
     list_pods,
     scale_deployment,
     get_pod_logs,

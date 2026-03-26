@@ -8,7 +8,7 @@ from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools.tool_context import ToolContext
 from google.genai import types
 
-from .shared_state import (
+from agents.shared_state import (
     append_execution_log,
     REQUIRES_CONFIRMATION,
 )

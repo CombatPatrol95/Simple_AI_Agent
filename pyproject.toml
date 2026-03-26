@@ -7,4 +7,10 @@ requires-python = ">=3.10"
 [tool.pyright]
 root = "."
 pythonVersion = "3.10"
+pythonPlatform = "Windows"
+venvPath = "."
+venv = "venv"
 extraPaths = ["."]
+
+[tool.pyre]
+search_path = ["."]
